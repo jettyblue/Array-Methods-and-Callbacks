@@ -70,10 +70,21 @@ Use the higher-order function getWinners to do the following:
 
 // 2 parameters - array / getFinalsCb
 // just compare goals, don't worry about overtime
-// use .map, use a conditional - if home team goals > away team goals then we want the home team name, else we want the away team name (on line 69)
-function getWinners(array, getFinalsCb) {
-    
-}
+// use .map, use a conditional - if home team goals > away team goals then we want the home team name, else we want the away team name
+
+// function getWinners(array, getFinalsCb) {
+//     const winners = getFinalsCb(array).map(item => {
+//         if(item['Home Team Goals'] > item['Away Team Goals']){
+//             return item['Home Team Name'];
+//         }else{
+//             return item['Away Team Name'];
+//         }
+//     });
+// }
+
+function getWinners(data, getFinalsCb) {
+    return getFinalsCb(data).map(item => item['Home Team Goals'] > item['Away Team Goals'] ? item['Home Team Name'] : item['Away Team Name']);
+  }
 
 console.log('task 4:', getWinners(fifaData, getFinals));
 
